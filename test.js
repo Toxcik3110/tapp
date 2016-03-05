@@ -5,13 +5,17 @@ function startTimer() {
     document.getElementById("stopButton").disabled = false;
     document.getElementById("clearButton").disabled = true;
     document.getElementById("sendButton").disabled = true;
+    date1 = new Date().getTime();
     timer = setInterval(function() {
-        date += 1;
+        date = new Date().getTime() - date1;
         var millis = date % 1000;
         var sec = Math.floor(date / 1000);
         sec = sec % 60;
         var min = Math.floor(date / 60000);
         var hours = Math.floor(date / 36000000);
+        if (Math.floor(millis/10) == 0) millis = "0" + millis;
+        if (Math.floor(millis/100) == 0) millis = "0" + millis;
+        if (Math.floor(millis/1000) == 0) millis = "" + millis;
         if (Math.floor(sec/10) == 0) sec = "0" + sec;
         if (Math.floor(min/10) == 0) min = "0" + min;
         if (Math.floor(hours/10) == 0) hours = "0" + hours;
@@ -34,6 +38,7 @@ function clearTimer() {
     document.getElementById("stopButton").disabled = true;
     document.getElementById("clearButton").disabled = true;
     document.getElementById("timer").value = 0;
+    date = 0;
 }
 
 function sendResult() {
