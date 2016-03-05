@@ -4,13 +4,19 @@
 }
 body {
     display: block;
-  background-color: #fff;
+  background-color: #408aff;
 }
 header {
     font-size: 5vw;
     background-color: #408aff;
     padding-bottom: 3%;
-    padding-top: 2%;
+    padding-top: 4.7%;
+}
+.bottom {
+    font-size: 5vw;
+    background-color: #408aff;
+    padding-bottom: 3%;
+    padding-top: 4.7%;
 }
 textarea {
     resize: vertical;
