@@ -12,35 +12,45 @@ header {
     padding-bottom: 3%;
     padding-top: 2%;
 }
-.list {
-    /* TODO: maybe change relation of div's  */
-}
 .separator {
     padding-top: 3%;
     width:  100%;
     background-color: white;
 }
+.list {
+    display:flex;
+    height: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* TODO: maybe change relation of div's  */
+}
 .content {
-    position: absolute;
+    flex-direction: column;
+    flex-grow: 30;
     padding: 5%;
-    width:55%;
     background-color: #8a40ff;
 }
     .content input {
       font-size: 2vw;
       padding: 2%;
       margin: 2%;
-      width: 70%;
+      width: 90%;
       border: solid 1px #fff;
     }
 .side {
-    position: absolute;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-wrap: wrap;
     left:65%;
-    padding:5%;
-    width:35%;
+    padding:0vw;
+    margin: 0%;
     background-color: #ff8a40;
 }
     .side .item {
-        width: 70%;
+        width: 100%;
+        flex-basis: 0;
+        flex-grow: 10;
+        padding: 2vw;
         font-size: 1.6vw;
+        size:1.5vw;
     }

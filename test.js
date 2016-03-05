@@ -1,3 +1,5 @@
+var date1 = null;
+var date2 = null;
 var date = 0;
 var timer = null;
 function startTimer() {
@@ -26,8 +28,10 @@ function startTimer() {
 }
 
 function stopTimer() {
-    if(timer != null)
-    window.clearInterval(timer);
+    if(timer != null) {
+        window.clearInterval(timer);
+
+    }
     document.getElementById("startButton").disabled = false;
     document.getElementById("clearButton").disabled = false;
     document.getElementById("sendButton").disabled = false;
@@ -39,8 +43,11 @@ function clearTimer() {
     document.getElementById("clearButton").disabled = true;
     document.getElementById("timer").value = 0;
     date = 0;
+    date1 = null;
 }
 
 function sendResult() {
+    date = 0;
+    date1 = null;
     document.getElementById("sendButton").disabled = true;
 }
