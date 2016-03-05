@@ -10,7 +10,7 @@
       <header align="center">
           Название этапа
       </header>
-      <div class="list">
+      <div class="list" id="first">
           <div class="content">
               <input id="team" type="text" readonly value="Зв'язка: Кладочний В. - Сидорук В.">
               <input id="timer" type="text" readonly>
@@ -22,8 +22,21 @@
               <input type="button" class="item" onclick="sendResult()" id="sendButton" disabled value="Send">
           </div>
       </div>
-      <div class="bottom" align="center">
+      <div class="list" id="second" hidden="true">
+          <div class="content1">
+              <textarea cols="30" disabled>Касание рельефа</textarea>
+              <div class="controll">
+                  <input type="text" onclick="addCounter(0)" readonly id="clearButton" value="Добавить один штраф">
+              <input type="text" class="counter" disabled value="0">
+              <input type="textarea" onclick="reduceCounter(0)" id="sendButton" value="Убрать один штраф" readonly>
+                </div>
+          </div>
+      </div>
+      <div class="bottom" align="center" onclick="changePage()">
           К штрафам
       </div>
+      <script type="text/javascript">
+        document.getElementById("second").style.display = "none";
+      </script>
   </body>
 </html>

@@ -2,6 +2,7 @@ var date1 = null;
 var date2 = null;
 var date = 0;
 var timer = null;
+var penalty = false;
 function startTimer() {
     document.getElementById("startButton").disabled = true;
     document.getElementById("stopButton").disabled = false;
@@ -59,4 +60,18 @@ function addCounter(index) {
 function reduceCounter(index) {
     if (document.getElementsByClassName("counter")[index].value > 0)
     document.getElementsByClassName("counter")[index].value = parseInt(document.getElementsByClassName("counter")[index].value) - 1;
+}
+
+function changePage() {
+    if(!penalty) {
+        penalty = !penalty;
+        document.getElementsByClassName("bottom")[0].innerHTML = "К таймеру";
+        document.getElementById("second").style.display = "flex";
+        document.getElementById("first").style.display = "none";
+    } else {
+        penalty = !penalty;
+        document.getElementsByClassName("bottom")[0].innerHTML = "К штрафам";
+        document.getElementById("second").style.display = "none";
+        document.getElementById("first").style.display = "flex";
+    }
 }
