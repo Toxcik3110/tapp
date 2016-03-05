@@ -7,10 +7,21 @@
     <title></title>
   </head>
   <body>
-    Hello, world!d <br>
-    <input id="timer" type="text" readonly> <br>
-    <button onclick="startTimer()" id="startButton"><b>Start/Continue</b></button><br>
-    <button onclick="stopTimer()" id="stopButton" disabled><b>Stop</b></button><button onclick="clearTimer()" id="clearButton" disabled><b>Clear</b></button><br>
-    <button onclick="sendResult()" id="sendButton" disabled><b>Send</b></button><br>
+      <header align="center">
+          Название этапа
+      </header>
+      <div class="list">
+          <div class="separator"></div>
+          <div class="content">
+              <input id="team" type="text" readonly value="Зв'язка: Кладочний В. - Сидорук В."> <br>
+              <input id="timer" type="text" readonly> <br>
+          </div>
+          <div class="side">
+              <input type="button" class="item" onclick="startTimer()" id="startButton" value="Start/Continue">
+              <input type="button" class="item" onclick="stopTimer()" id="stopButton" disabled value="Stop">
+              <input type="button" class="item" onclick="clearTimer()" id="clearButton" disabled value="Clear">
+              <input type="button" class="item" onclick="sendResult()" id="sendButton" disabled value="Send">
+          </div>
+      </div>
   </body>
 </html>

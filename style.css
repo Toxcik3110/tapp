@@ -1,3 +1,46 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
 body {
+    display: block;
   background-color: #fff;
 }
+header {
+    font-size: 5vw;
+    background-color: #408aff;
+    padding-bottom: 3%;
+    padding-top: 2%;
+}
+.list {
+    /* TODO: maybe change relation of div's  */
+}
+.separator {
+    padding-top: 3%;
+    width:  100%;
+    background-color: white;
+}
+.content {
+    position: absolute;
+    padding: 5%;
+    width:55%;
+    background-color: #8a40ff;
+}
+    .content input {
+      font-size: 2vw;
+      padding: 2%;
+      margin: 2%;
+      width: 70%;
+      border: solid 1px #fff;
+    }
+.side {
+    position: absolute;
+    left:65%;
+    padding:5%;
+    width:35%;
+    background-color: #ff8a40;
+}
+    .side .item {
+        width: 70%;
+        font-size: 1.6vw;
+    }
