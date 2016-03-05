@@ -51,3 +51,12 @@ function sendResult() {
     date1 = null;
     document.getElementById("sendButton").disabled = true;
 }
+
+function addCounter(index) {
+    document.getElementsByClassName("counter")[index].value = 1 + parseInt(document.getElementsByClassName("counter")[index].value);
+}
+
+function reduceCounter(index) {
+    if (document.getElementsByClassName("counter")[index].value > 0)
+    document.getElementsByClassName("counter")[index].value = parseInt(document.getElementsByClassName("counter")[index].value) - 1;
+}

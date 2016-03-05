@@ -12,6 +12,10 @@ header {
     padding-bottom: 3%;
     padding-top: 2%;
 }
+textarea {
+    resize: vertical;
+    height: 5%;
+}
 .separator {
     padding-top: 3%;
     width:  100%;
@@ -25,20 +29,35 @@ header {
     /* TODO: maybe change relation of div's  */
 }
 .content {
-    flex-direction: column;
-    flex-grow: 30;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
     padding: 5%;
     background-color: #ff8a40;
 }
-    .content input {
-      font-size: 2vw;
-      padding: 2%;
-      margin: 2%;
-      width: 90%;
-      border: solid 1px #fff;
+.content textarea {
+
+    flex-grow: 4;
+    align-self: flex-end;
+    font-size: 2vw;
+    width: 20%;
+}
+.controll {
+    display:flex;
+    width: 100%;
+}
+    .controll input {
+        flex-grow: 2;
+        align-self: flex-start;
+        font-size: 2vw;
+        padding: 2%;
+        width: 20%;
+        text-align: center;
+        border: solid 1px #fff;
     }
 .side {
-    flex-direction: column;
+    flex-direction: row;
     flex-grow: 1;
     flex-wrap: wrap;
     left:65%;
@@ -47,9 +66,7 @@ header {
     background-color: #ff8a40;
 }
     .side .item {
-        width: 100%;
-        flex-basis: 0;
-        flex-grow: 10;
+        flex-grow: 1;
         padding: 2vw;
         font-size: 1.6vw;
         size:1.5vw;
