@@ -11,6 +11,7 @@ textarea {
     height: 5%;
 }
 header {
+    color: white;
     font-size: 5vw;
     background-color: #408aff;
     padding-bottom: 3%;
@@ -45,6 +46,7 @@ header {
         border: solid 1px #fff;
     }
 .bottom {
+    color: white;
     font-size: 5vw;
     background-color: #408aff;
     padding-bottom: 3%;

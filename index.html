@@ -2,41 +2,80 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-    <script src="test.js"></script>
+    <link rel="stylesheet" href="style1.css">
+    <script src="index.js"></script>
     <title></title>
   </head>
-  <body>
+  <body onload="getData('getTeams')">
       <header align="center">
-          Название этапа
+          Приветствуем в TAPP!
       </header>
-      <div class="list" id="first">
-          <div class="content">
-              <input id="team" type="text" readonly value="Зв'язка: Кладочний В. - Сидорук В.">
-              <input id="timer" type="text" readonly>
-          </div>
-          <div class="side">
-              <input type="button" class="item" onclick="startTimer()" id="startButton" value="Start">
-              <input type="button" class="item" onclick="stopTimer()" id="stopButton" disabled value="Stop">
-              <input type="button" class="item" onclick="clearTimer()" id="clearButton" disabled value="Clear">
-              <input type="button" class="item" onclick="sendResult()" id="sendButton" disabled value="Send">
-          </div>
-      </div>
       <div class="list" id="second" hidden="true">
-          <div class="content1">
-              <textarea cols="30" disabled>Касание рельефа</textarea>
-              <div class="controll">
-                  <input type="text" onclick="addCounter(0)" readonly id="clearButton" value="Добавить один штраф">
-              <input type="text" class="counter" disabled value="0">
-              <input type="textarea" onclick="reduceCounter(0)" id="sendButton" value="Убрать один штраф" readonly>
-                </div>
+          <div class="content">
+              <div class="AddTeam">
+              <input type="text" id="u1" value="Связка:" readonly>
+              <input id="team" type="text" value="">
+              <input id="u2" type="button" onclick="addTeam" value="Добавить связку">
+              </div>
+              <div class="SelectTeam">
+                  <select id="teams" required>
+                      <option value="" disabled selected>Выберете команду</option>
+                  </select>
+              </div>
+              <div class="SelectStage">
+                  <select id="stages" required>
+                      <option value="" disabled selected>Выберете этап</option>
+                  </select>
+              </div>
           </div>
       </div>
-      <div class="bottom" align="center" onclick="changePage()">
-          К штрафам
+      <div class="bottom" align="center">
+          <a href="timer.html" style="color:white;text-decoration:none">Судить</a>
       </div>
       <script type="text/javascript">
-        document.getElementById("second").style.display = "none";
+      function getData(str) {
+          var xhttp;
+          var boo = 0;
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+              if (xhttp.readyState = 4 && xhttp.status == 200 && boo < 2) {
+                  boo = boo + 1;
+                  console.log(JSON.parse(xhttp.responseText));
+                  console.log(JSON.parse(xhttp.responseText).length);
+                  var teams = JSON.parse(xhttp.responseText);
+                  for(var i = 0; i < teams.length; i++) {
+                      var option = document.createElement("option");
+                      option.text = teams[i].name;
+                      option.value= teams[i].id;
+                      document.getElementById("teams").add(option);
+                  }
+                  getData1("getStages");
+              }
+          };
+          xhttp.open("GET", "http://localhost:1337/" + str, true);
+          xhttp.send();
+      }
+      function getData1(str) {
+          var xhttp;
+          var boo = 0;
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+              if (xhttp.readyState = 4 && xhttp.status == 200 && boo < 2) {
+                  boo = boo + 1;
+                  console.log(JSON.parse(xhttp.responseText));
+                  console.log(JSON.parse(xhttp.responseText).length);
+                  var stages = JSON.parse(xhttp.responseText);
+                  for(var i = 0; i < stages.length; i++) {
+                      var option = document.createElement("option");
+                      option.text = stages[i].name;
+                      option.value= stages[i].id;
+                      document.getElementById("stages").add(option);
+                  }
+              }
+          };
+          xhttp.open("GET", "http://localhost:1337/" + str, true);
+          xhttp.send();
+      }
       </script>
   </body>
 </html>

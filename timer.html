@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="test.js"></script>
+    <title></title>
+  </head>
+  <body>
+      <header align="center">
+          Название этапа
+      </header>
+      <div class="list" id="first">
+          <div class="content">
+              <input id="team" type="text" readonly value="Зв'язка: Кладочний В. - Сидорук В.">
+              <input id="timer" type="text" readonly>
+          </div>
+          <div class="side">
+              <input type="button" class="item" onclick="startTimer()" id="startButton" value="Start">
+              <input type="button" class="item" onclick="stopTimer()" id="stopButton" disabled value="Stop">
+              <input type="button" class="item" onclick="clearTimer()" id="clearButton" disabled value="Clear">
+              <input type="button" class="item" onclick="sendResult()" id="sendButton" disabled value="Send">
+          </div>
+      </div>
+      <div class="list" id="second" hidden="true">
+          <div class="content1">
+              <textarea cols="30" disabled>Касание рельефа</textarea>
+              <div class="controll">
+                  <input type="text" onclick="addCounter(0)" readonly id="clearButton" value="Добавить один штраф">
+              <input type="text" class="counter" disabled value="0">
+              <input type="textarea" onclick="reduceCounter(0)" id="sendButton" value="Убрать один штраф" readonly>
+                </div>
+          </div>
+      </div>
+      <div class="bottom" align="center" onclick="changePage()">
+          К штрафам
+      </div>
+      <div class="bottom" align="center">
+          <a href="index.html" style="color:white;">Выход</a>
+      </div>
+      <script type="text/javascript">
+        document.getElementById("second").style.display = "none";
+      </script>
+  </body>
+</html>

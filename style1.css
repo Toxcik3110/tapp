@@ -6,35 +6,18 @@ body {
     display: block;
   background-color: #408aff;
 }
-header {
-    font-size: 5vw;
-    background-color: #408aff;
-    padding-bottom: 3%;
-    padding-top: 4.7%;
-}
-.bottom {
-    font-size: 5vw;
-    background-color: #408aff;
-    padding-bottom: 3%;
-    padding-top: 4.7%;
-}
 textarea {
     resize: vertical;
     height: 5%;
 }
-.separator {
+header {
+    color: white;
+    font-size: 5vw;
+    background-color: #408aff;
+    padding-bottom: 3%;
     padding-top: 3%;
-    width:  100%;
-    background-color: white;
 }
-.list {
-    display:flex;
-    height: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    /* TODO: maybe change relation of div's  */
-}
-.content {
+.content1 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -42,12 +25,41 @@ textarea {
     padding: 5%;
     background-color: #ff8a40;
 }
-.content textarea {
+.content1 textarea {
 
     flex-grow: 4;
     align-self: flex-end;
     font-size: 2vw;
     width: 20%;
+}
+.AddTeam {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.AddTeam #team {
+    flex-grow: 4;
+    width: 100%;
+}
+.AddTeam #u1 #u2 {
+    flex: 1;
+    width: 30%;
+}
+.SelectTeam {
+    display: flex;
+}
+.SelectTeam select {
+    font-size: 2vw;
+    width: 100%;
+    padding: 2%;
+}
+.SelectStage {
+    display: flex;
+}
+.SelectStage select {
+    font-size: 2vw;
+    width: 100%;
+    padding: 2%;
 }
 .controll {
     display:flex;
@@ -62,8 +74,41 @@ textarea {
         text-align: center;
         border: solid 1px #fff;
     }
-.side {
+.bottom {
+    color: white;
+    font-size: 5vw;
+    background-color: #408aff;
+    padding-bottom: 3%;
+    padding-top: 3%;
+}
+.separator {
+    padding-top: 3%;
+    width:  100%;
+    background-color: white;
+}
+.list {
+    display:flex;
+    height: 100%;
     flex-direction: row;
+    flex-wrap: wrap;
+    /* TODO: maybe change relation of div's  */
+}
+.content {
+
+    flex-direction: column;
+    flex-grow: 30;
+    padding: 5%;
+    background-color: #ff8a40;
+}
+    .content input {
+      font-size: 2vw;
+      padding: 2%;
+      margin: 2%;
+      width: 90%;
+      border: solid 1px #fff;
+    }
+.side {
+    flex-direction: column;
     flex-grow: 1;
     flex-wrap: wrap;
     left:65%;
@@ -72,7 +117,9 @@ textarea {
     background-color: #ff8a40;
 }
     .side .item {
-        flex-grow: 1;
+        width: 100%;
+        flex-basis: 0;
+        flex-grow: 10;
         padding: 2vw;
         font-size: 1.6vw;
         size:1.5vw;
