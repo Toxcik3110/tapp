@@ -2,20 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style1.css">
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="test.js"></script>
     <title></title>
   </head>
   <body onload="getData('getTeams')">
-      <header align="center">
+      <header align="center" id="header">
           Приветствуем в TAPP!
       </header>
-      <div class="list" id="second">
+      <div class="list" id="third">
           <div class="content">
               <div class="AddTeam">
               <input type="text" id="u1" value="Связка:" readonly>
-              <input id="team" type="text" value="">
-              <input id="u2" type="button" onclick="addTeam" value="Добавить связку">
+              <input id="newTeam" type="text" value="">
+              <input id="u2" type="button" onclick="addTeam(document.getElementById('newTeam').value)" value="Добавить связку">
               </div>
               <div class="SelectTeam">
                   <select id="teams" required>
@@ -29,53 +29,35 @@
               </div>
           </div>
       </div>
-      <div class="bottom" align="center">
-          <a href="timer.html" style="color:white;text-decoration:none">Судить</a>
+      <div class="list" id="first">
+          <div class="content">
+              <input id="team" type="text" readonly value="">
+              <input id="timer" type="text" readonly>
+              <input id="timer1" type="text" readonly>
+              <input id="timer2" type="text" readonly>
+          </div>
+          <div class="side">
+              <input type="button" class="item" onclick="startTimer()" id="startButton" value="Старт">
+              <input type="button" class="item" onclick="stopTimer()" id="stopButton" disabled value="Стоп">
+              <input type="button" class="item" onclick="clearTimer()" id="clearButton" disabled value="Очистить">
+              <input type="button" class="item" onclick="sendResult()" id="sendButton" disabled value="Отправить">
+          </div>
+      </div>
+      <div class="list" id="second" hidden="true">
+
+      </div>
+      <div class="bottom" align="center" onclick="changePage()">
+          Судить
+      </div>
+      <div class="bottom" id="exit" align="center" onclick="exit()">
+          Выход
       </div>
       <script type="text/javascript">
-      function getData(str) {
-          var xhttp;
-          var boo = 0;
-          xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-              if (xhttp.readyState = 4 && xhttp.status == 200 && boo < 2) {
-                  boo = boo + 1;
-                  console.log(JSON.parse(xhttp.responseText));
-                  console.log(JSON.parse(xhttp.responseText).length);
-                  var teams = JSON.parse(xhttp.responseText);
-                  for(var i = 0; i < teams.length; i++) {
-                      var option = document.createElement("option");
-                      option.text = teams[i].name;
-                      option.value= teams[i].id;
-                      document.getElementById("teams").add(option);
-                  }
-                  getData1("getStages");
-              }
-          };
-          xhttp.open("GET", "http://localhost:1337/" + str, true);
-          xhttp.send();
-      }
-      function getData1(str) {
-          var xhttp;
-          var boo = 0;
-          xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-              if (xhttp.readyState = 4 && xhttp.status == 200 && boo < 2) {
-                  boo = boo + 1;
-                  console.log(JSON.parse(xhttp.responseText));
-                  console.log(JSON.parse(xhttp.responseText).length);
-                  var stages = JSON.parse(xhttp.responseText);
-                  for(var i = 0; i < stages.length; i++) {
-                      var option = document.createElement("option");
-                      option.text = stages[i].name;
-                      option.value= stages[i].id;
-                      document.getElementById("stages").add(option);
-                  }
-              }
-          };
-          xhttp.open("GET", "http://localhost:1337/" + str, true);
-          xhttp.send();
-      }
+      document.getElementById("timer1").style.display = "none";
+      document.getElementById("timer2").style.display = "none";
+        document.getElementById("second").style.display = "none";
+        document.getElementById("first").style.display = "none";
+        document.getElementById("exit").style.display = "none";
       </script>
   </body>
 </html>

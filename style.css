@@ -19,7 +19,7 @@ header {
 }
 .content1 {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     flex-grow: 1;
     padding: 5%;
@@ -30,10 +30,11 @@ header {
     flex-grow: 4;
     align-self: flex-end;
     font-size: 2vw;
-    width: 20%;
+    width: 100%;
 }
 .controll {
     display:flex;
+    flex-direction: row;
     width: 100%;
 }
     .controll input {
@@ -74,7 +75,7 @@ header {
     display: flex;
 }
 .SelectTeam select {
-    font-size: 2vw;
+    font-size: 4vw;
     width: 100%;
     padding: 2%;
 }
@@ -82,7 +83,7 @@ header {
     display: flex;
 }
 .SelectStage select {
-    font-size: 2vw;
+    font-size: 4vw;
     width: 100%;
     padding: 2%;
 }

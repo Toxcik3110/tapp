@@ -6,6 +6,11 @@ var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
 var url = 'mongodb://localhost:27017/tapp';
 var dbObject = null;
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   console.log("Connected correctly to server.");
@@ -29,6 +34,21 @@ var downloadDB = function(db, callback) {
       }
    });
 };
+
+var removeInfo = function(db, callback) {
+   db.collection('competition').deleteMany( {}, function(err, results) {
+      console.log(results);
+      callback();
+   });
+};
+
+var insertDocument = function(db, callback) {
+   db.collection('competition').insertOne(dbObject, function(err, result) {
+    assert.equal(err, null);
+    console.log("Inserted a document into the restaurants collection.");
+    callback();
+  });
+};
 //192/168/103/1
 //app.use(express.favicon()); // отдаем стандартную фавиконку, можем здесь же свою задать
 //app.use(express.logger('dev')); // выводим все запросы со статусами в консоль
@@ -50,18 +70,63 @@ app.get('/getTeams', function (req, res) {
     console.log(JSON.stringify(dbObject.teams));
     console.log(dbObject.teams.length);
 });
+app.get('/getAll', function (req, res) {
+    res.json(dbObject);
+    console.log(dbObject);
+});
 app.get('/getStages', function (req, res) {
     res.json(dbObject.stages);
     console.log(JSON.stringify(dbObject.stages));
     console.log(dbObject.stages.length);
 });
-// app.get('/', function (req, res) {
-//     res.sendFile('index.html');
-// });
+app.post('/addTeam', function (req, res) {
+    res.send("OK");
+    dbObject.teams.push({
+        "id":dbObject.teams.length,
+        "name":req.body.name,
+        "results": []
+    })
+    //console.log(req);
+    MongoClient.connect(url, function(err, db) {
+      assert.equal(null, err);
 
-// app.get('*', function(req, res){
-//   res.sendFile(__dirname + '/index.html');
-// });
+      removeInfo(db, function() {
+          db.close();
+      });
+    });
+    MongoClient.connect(url, function(err, db) {
+      assert.equal(null, err);
+      insertDocument(db, function() {
+          db.close();
+      });
+    });
+    console.log("POST ADD TEAM");
+    console.log(req.body);
+});
+
+app.post('/addResult', function (req, res) {
+    res.send("OK");
+    console.log("RERERESULT")
+    console.log(req.body.result)
+    dbObject.teams[req.body.teamId].results.push(req.body.result);
+    //console.log(req);
+    MongoClient.connect(url, function(err, db) {
+      assert.equal(null, err);
+
+      removeInfo(db, function() {
+          db.close();
+      });
+    });
+    MongoClient.connect(url, function(err, db) {
+      assert.equal(null, err);
+      insertDocument(db, function() {
+          db.close();
+      });
+    });
+    console.log("POST ADD TEAM");
+    console.log(req.body);
+});
+
 
 app.listen(1337, function(){
     console.log('Express server listening on port 1337');
