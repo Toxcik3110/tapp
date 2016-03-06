@@ -6,13 +6,32 @@
     <script src="test.js"></script>
     <title></title>
   </head>
-  <body>
-      <header align="center">
-          Название этапа
+  <body onload="getData('getTeams')">
+      <header align="center" id="header">
+          Приветствуем в TAPP!
       </header>
+      <div class="list" id="third">
+          <div class="content">
+              <div class="AddTeam">
+              <input type="text" id="u1" value="Связка:" readonly>
+              <input id="newTeam" type="text" value="">
+              <input id="u2" type="button" onclick="addTeam" value="Добавить связку">
+              </div>
+              <div class="SelectTeam">
+                  <select id="teams" required>
+                      <option value="" disabled selected>Выберете команду</option>
+                  </select>
+              </div>
+              <div class="SelectStage">
+                  <select id="stages" required>
+                      <option value="" disabled selected>Выберете этап</option>
+                  </select>
+              </div>
+          </div>
+      </div>
       <div class="list" id="first">
           <div class="content">
-              <input id="team" type="text" readonly value="Зв'язка: Кладочний В. - Сидорук В.">
+              <input id="team" type="text" readonly value="">
               <input id="timer" type="text" readonly>
           </div>
           <div class="side">
@@ -24,7 +43,7 @@
       </div>
       <div class="list" id="second" hidden="true">
           <div class="content1">
-              <textarea cols="30" disabled>Касание рельефа</textarea>
+              <textarea cols="30" disabled class="penaltyName"></textarea>
               <div class="controll">
                   <input type="text" onclick="addCounter(0)" readonly id="clearButton" value="Добавить один штраф">
               <input type="text" class="counter" disabled value="0">
@@ -33,13 +52,15 @@
           </div>
       </div>
       <div class="bottom" align="center" onclick="changePage()">
-          К штрафам
+          Судить
       </div>
-      <div class="bottom" align="center">
-          <a href="index.html" style="color:white;">Выход</a>
+      <div class="bottom" id="exit" align="center" onclick="exit()">
+          Выход
       </div>
       <script type="text/javascript">
         document.getElementById("second").style.display = "none";
+        document.getElementById("first").style.display = "none";
+        document.getElementById("exit").style.display = "none";
       </script>
   </body>
 </html>
