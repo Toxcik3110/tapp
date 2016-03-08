@@ -24,7 +24,6 @@ function ($stateProvider) {
         controller: 'ResultsCtrl',
         templateUrl: 'pages/results.html'
     });
-
 }]);
 app.run([
     '$rootScope', '$state', '$stateParams',
@@ -33,8 +32,7 @@ app.run([
         $rootScope.$stateParams = $stateParams;
         //$rootScope.socket = io();
         console.log("app started");
-        var timer = new Date().getTime();
-        $rootScope.timer = timer;
+        //$rootScope.timer = timer;
         $rootScope.$state.go('main.login.results');
         // console.log("GO IN auth login");
         // var socket = io.connect('http://localhost:3000');
